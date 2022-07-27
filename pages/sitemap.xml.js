@@ -1,25 +1,12 @@
 import { getServerSideSitemap } from 'next-sitemap';
+import {testGenerator} from "../utils/dummy";
 
 export const getServerSideProps = async (ctx) => {
   const lastmod = new Date().toISOString();
 
+  const defaultFields = testGenerator(lastmod);
 
 
-  const defaultFields = [
-    {
-      loc: 'https://sitemap-five.vercel.app/',
-      changefreq: 'daily',
-      priority: '1',
-      lastmod,
-    },
-    {
-      loc: 'test',
-      changefreq: 'daily',
-      priority: '1',
-      lastmod,
-    },
-
-  ];
 
   return getServerSideSitemap(ctx, defaultFields);
 };
